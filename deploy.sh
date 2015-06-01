@@ -5,8 +5,10 @@ EXITCODE=1
 PARAMS=""
 [ -f /app/params.json ] && PARAMS="--parameters=file:///app/params.json"
 
+echo_exe() { echo "\$ $@" ; "$@" ; }
+
 cf_update() {
-  aws cloudformation update-stack \
+  echo_exe aws cloudformation update-stack \
     --stack-name $STACKNAME \
     --template-body file:///app/stack.json \
     --capabilities=CAPABILITY_IAM \
@@ -14,7 +16,7 @@ cf_update() {
 }
 
 cf_create() {
-  aws cloudformation create-stack \
+  echo_exe aws cloudformation create-stack \
     --stack-name $STACKNAME \
     --template-body file:///app/stack.json \
     --capabilities=CAPABILITY_IAM \
@@ -44,7 +46,7 @@ cf_tail() {
       comm --nocheck-order -13 <(echo "$previous") <(echo "$current")
     fi
     previous="$current"
-    sleep 1
+    sleep 5
     $(echo "$current" | tail -1 | egrep -q "${stack}.*(CREATE|UPDATE)_COMPLETE") && EXITCODE=0
   done
 }
