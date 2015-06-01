@@ -50,7 +50,7 @@ cf_tail() {
 }
 
 if $(aws cloudformation describe-stacks --stack-name $STACKNAME >/dev/null 2>&1); then
-  $(cf_update 2>&1) | grep "No updates are to be performed" && EXITCODE=0
+  cf_update 2>&1 | grep "No updates are to be performed" && EXITCODE=0
 else
   cf_create
 fi
