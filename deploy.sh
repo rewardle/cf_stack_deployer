@@ -2,6 +2,24 @@
 
 STACKNAME=$1
 EXITCODE=1
+PARAMS=""
+[ -f /app/params.json ] && PARAMS="--parameters=file:///app/params.json"
+
+cf_update() {
+  aws cloudformation update-stack \
+    --stack-name $STACKNAME \
+    --template-body file:///app/stack.json \
+    --capabilities=CAPABILITY_IAM \
+    $PARAMS
+}
+
+cf_create() {
+  aws cloudformation create-stack \
+    --stack-name $STACKNAME \
+    --template-body file:///app/stack.json \
+    --capabilities=CAPABILITY_IAM \
+    $PARAMS
+}
 
 cf_events() {
   if [ -z "$1" ] ; then echo "Usage: $FUNCNAME stack"; return 1; fi
@@ -27,26 +45,15 @@ cf_tail() {
     fi
     previous="$current"
     sleep 1
-    $(echo "$current" | tail -1 | egrep -q "${stack}.*(CREATE|UPDATE)_COMPLETE ") && EXITCODE=0
+    $(echo "$current" | tail -1 | egrep -q "${stack}.*(CREATE|UPDATE)_COMPLETE") && EXITCODE=0
   done
 }
 
-PARAMS=""
-[ -f /app/params.json ] && PARAMS="--parameters file:///app/params.json"
-
 if $(aws cloudformation describe-stacks --stack-name $STACKNAME >/dev/null 2>&1); then
-  aws cloudformation update-stack \
-    --stack-name $STACKNAME \
-    --template-body file:///app/stack.json \
-    --capabilities=CAPABILITY_IAM \
-    $PARAMS
+  $(cf_update 2>&1) | grep "No updates are to be performed" && EXITCODE=0
 else
-  aws cloudformation create-stack \
-    --stack-name $STACKNAME \
-    --template-body file:///app/stack.json \
-    --capabilities=CAPABILITY_IAM \
-    $PARAMS
+  cf_create
 fi
 
-cf_tail $STACKNAME
+[[ $EXITCODE -eq 0 ]] || cf_tail $STACKNAME
 exit $EXITCODE
