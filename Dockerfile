@@ -3,7 +3,7 @@ MAINTAINER Kevin Littlejohn <kevin@littlejohn.id.au>
 
 RUN apt-get -yq update \
   && apt-get -yq install git groff less python python-pip \
-  && pip install awscli \
+  && pip install awscli rainbow-cfn \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
