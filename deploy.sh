@@ -6,7 +6,7 @@ EXITCODE=1
 cf_events() {
   if [ -z "$1" ] ; then echo "Usage: $FUNCNAME stack"; return 1; fi
   local stack=$1
-  aws cloudformation describe-stack-events --stack-name $stack --query 'sort_by(StackEvents, &Timestamp)[].{Resource: LogicalResourceId, Type: ResourceType, Status: ResourceStatus}' --output text
+  aws cloudformation describe-stack-events --stack-name $stack --query 'sort_by(StackEvents, &Timestamp)[].[Timestamp, LogicalResourceId, ResourceStatus, ResourceType]' --output text
 }
 
 cf_tail() {
@@ -27,7 +27,7 @@ cf_tail() {
     fi
     previous="$current"
     sleep 1
-    $(echo "$current" | tail -1 | egrep -q "${stack}.*(CREATE|UPDATE)_COMPLETE") && EXITCODE=0
+    $(echo "$current" | tail -1 | egrep -q "${stack}.*(CREATE|UPDATE)_COMPLETE ") && EXITCODE=0
   done
 }
 
