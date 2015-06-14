@@ -2,8 +2,9 @@ FROM debian:jessie
 MAINTAINER Kevin Littlejohn <kevin@littlejohn.id.au>
 
 RUN apt-get -yq update \
-  && apt-get -yq install git groff less python python-pip \
-  && pip install awscli rainbow-cfn \
+  && apt-get -yq install git groff less python python-pip libyaml-dev \
+  && pip install awscli \
+  && pip install git+https://github.com/rewardle/rainbow.git \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
