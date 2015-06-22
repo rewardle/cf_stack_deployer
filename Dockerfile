@@ -4,8 +4,8 @@ MAINTAINER Kevin Littlejohn <kevin@littlejohn.id.au>
 RUN apt-get -yq update \
   && apt-get -yq install git groff less python python-dev python-pip libyaml-dev \
   && pip install awscli \
-  #&& pip install git+https://github.com/rewardle/rainbow.git \
-  && pip install rainbow-cfn \
+  && pip install git+https://github.com/rewardle/rainbow.git \
+  #&& pip install rainbow-cfn \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
