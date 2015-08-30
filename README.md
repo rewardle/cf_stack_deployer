@@ -2,7 +2,7 @@
 
 This repo provides a docker image that will deploy a stack to CloudFormation.
 
-This repo is auto-built on index.docker.io as rewardle/deployer
+This repo is auto-built at https://hub.docker.com/r/rewardle/deployer/
 
 ## Use
 
