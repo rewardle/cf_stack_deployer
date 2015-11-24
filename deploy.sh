@@ -8,7 +8,7 @@ PARAMS=""
 JSON=$(aws cloudformation describe-stacks --region ${AWS_REGION:-ap-southeast-2} --stack-name $STACKNAME)
 if [ -n "${JSON}" ]; then
   STATUS=$(echo ${JSON} | jq '.Stacks[0].StackStatus')
-  if [ "${STATUS}" -eq "CREATE_FAILED" ]; then
+  if [ "${STATUS}" == "CREATE_FAILED" ]; then
     aws cloudformation delete-stack --region ${AWS_REGION:-ap-southeast-2} --stack-name ${STACKNAME}
   fi
 fi
