@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 
 STACKNAME=$1
 shift
