@@ -8,7 +8,8 @@ RUN apt-get -yq update \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN curl https://github.com/apex/apex/releases/download/v0.7.2/apex_linux_amd64 -o /usr/local/bin/apex && chmod +x $_
+RUN curl https://github.com/apex/apex/releases/download/v0.7.2/apex_linux_amd64 -o /usr/local/bin/apex \
+  && chmod +x /usr/local/bin/apex
 
 RUN aws configure set region ap-southeast-2
 
