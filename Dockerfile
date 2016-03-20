@@ -2,7 +2,7 @@ FROM debian:jessie
 MAINTAINER Kevin Littlejohn <kevin@littlejohn.id.au>
 
 RUN apt-get -yq update \
-  && apt-get -yq install git groff less python python-dev python-pip libyaml-dev jq \
+  && apt-get -yq install git groff less python python-dev python-pip libyaml-dev jq curl \
   && pip install awscli \
   && pip install git+https://github.com/rewardle/rainbow.git \
   && apt-get clean \
