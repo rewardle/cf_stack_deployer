@@ -22,5 +22,6 @@ echo "--- Tagging $IMGNAME"
 docker tag $NAME $IMGNAME
 
 echo "--- Pushing docker image"
-docker run -it --entrypoint=aws ecr create-repository --repository-name $BASENAME --region $REGION
+docker run -it --entrypoint=aws $NAME \
+  ecr create-repository --repository-name $BASENAME --region $REGION
 docker push $IMGNAME
