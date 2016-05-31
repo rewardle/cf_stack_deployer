@@ -17,7 +17,7 @@ ACCT=$(docker run -it --entrypoint=aws rewardle/deployer \
     --output text | cut -d: -f5)
 
 IMGNAME="$ACCT.dkr.ecr.$REGION.amazonaws.com/rewardle/deployer:$BUILDKITE_BUILD_NUMBER"
-echo "--- Building rewardle/deployer"
+echo "--- Building $IMGNAME"
 docker build -t $IMGNAME .
 
 echo "--- Pushing docker image"
