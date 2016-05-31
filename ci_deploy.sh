@@ -3,7 +3,7 @@
 # Internal deployer
 
 echo "--- Getting ECR credentials and logging in"
-$(docker run -it --entrypoint=aws rewardle/deployer ecr get-login)
+$(docker run -it --entrypoint=aws rewardle/deployer ecr get-login --region=us-west-2 | tr -d '\r')
 
 echo "--- Finding the account id"
 ACCT=$(docker run -it --entrypoint=aws rewardle/deployer \
@@ -14,7 +14,7 @@ ACCT=$(docker run -it --entrypoint=aws rewardle/deployer \
     --query "StackResourceDetail.StackId" \
     --output text | cut -d: -f5)
 
-IMGNAME="$ACCT.dkr.ecr.us-east-1.amazonaws.com/rewardle/deployer:$BUILDKITE_BUILD_NUMBER"
+IMGNAME="$ACCT.dkr.ecr.us-west-2.amazonaws.com/rewardle/deployer:$BUILDKITE_BUILD_NUMBER"
 echo "--- Building rewardle/deployer"
 docker build -t $IMGNAME .
 
