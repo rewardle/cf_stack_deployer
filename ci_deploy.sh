@@ -10,7 +10,7 @@ $(docker run -it --entrypoint=aws rewardle/deployer ecr get-login --region=$REGI
 
 echo "--- Finding the account id"
 ACCT=$(docker run -it --entrypoint=aws rewardle/deployer \
-  sts get-caller-identity --query "Account" --output text)
+  sts get-caller-identity --query "Account" --output text | tr -d '\r')
 
 IMGNAME="$ACCT.dkr.ecr.$REGION.amazonaws.com/rewardle/deployer:$BUILDKITE_BUILD_NUMBER"
 echo "--- Building $IMGNAME"
