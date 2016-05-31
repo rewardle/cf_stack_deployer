@@ -1,0 +1,7 @@
+- steps
+  - name: build and deploy to ECR
+    command: ./ci_deploy.sh
+    agent:
+      os: linux
+      environment: prod
+      role: deployer
