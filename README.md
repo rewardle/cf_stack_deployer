@@ -1,3 +1,5 @@
+[![](https://images.microbadger.com/badges/version/rewardle/deployer.svg)](http://microbadger.com/images/rewardle/deployer)
+
 ## Purpose ##
 
 This repo provides a docker image that will deploy a stack to CloudFormation.
