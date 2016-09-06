@@ -1,4 +1,4 @@
-[![](https://images.microbadger.com/badges/version/rewardle/deployer.svg)](http://microbadger.com/images/rewardle/deployer)
+[![](https://images.microbadger.com/badges/image/rewardle/deployer.svg)](http://microbadger.com/images/rewardle/deployer)
 
 ## Purpose ##
 
