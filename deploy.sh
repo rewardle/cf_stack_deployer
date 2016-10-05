@@ -16,4 +16,4 @@ if [ -n "${JSON}" ]; then
   fi
 fi
 
-rainbow --update-stack-if-exists -v -r ${AWS_REGION:-ap-southeast-2} ${PARAMS} --block ${STACKNAME} stack.json "$@"
+rainbow --update-stack-if-exists -v -r ${AWS_REGION:-ap-southeast-2} ${PARAMS} ${STACKNAME} stack.json "$@"
