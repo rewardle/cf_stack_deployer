@@ -2,7 +2,7 @@ FROM debian:jessie
 MAINTAINER Kevin Littlejohn <kevin@littlejohn.id.au>
 
 RUN apt-get -yq update \
-  && apt-get -yq install git groff less python python-dev python-pip libyaml-dev jq curl golang libunwind8 gettext wget \
+  && apt-get -yq install git groff less python python-dev python-pip libyaml-dev jq curl golang libunwind8 gettext wget build-essential libssl-dev dash \
   && pip install awscli boto3 \
   && pip install git+https://github.com/rewardle/rainbow.git \
   && apt-get clean \
@@ -18,6 +18,13 @@ RUN curl -sSL -o /tmp/dotnet.tar.gz https://go.microsoft.com/fwlink/?linkid=8434
   && mkdir -p /opt/dotnet \
   && tar zxf /tmp/dotnet.tar.gz -C /opt/dotnet \
   && ln -s /opt/dotnet/dotnet /usr/local/bin \
+  && rm -rf /tmp/*
+
+RUN curl -sL -o /tmp/install_nvm.sh https://raw.githubusercontent.com/creationix/nvm/v0.32.0/install.sh \
+  && bash /tmp/install_nvm.sh \
+  && dash /tmp/install_nvm.sh \
+  && . "$NVM_DIR/nvm.sh" \
+  && nvm install node \
   && rm -rf /tmp/*
 
 RUN aws configure set region ap-southeast-2
