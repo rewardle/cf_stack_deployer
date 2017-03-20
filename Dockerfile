@@ -29,7 +29,8 @@ RUN curl -sL https://raw.githubusercontent.com/creationix/nvm/v0.33.1/install.sh
   && . ~/.bashrc \
   && nvm install $NODE_VERSION_1 \
   && nvm install $NODE_VERSION_2 \
-  && nvm alias default $NODE_VERSION_1 
+  && nvm alias default $NODE_VERSION_1 \
+  && rm -rf /tmp/*
   
 RUN aws configure set region ap-southeast-2
 
