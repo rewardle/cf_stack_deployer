@@ -20,16 +20,16 @@ RUN curl -sSL -o /tmp/dotnet.tar.gz https://go.microsoft.com/fwlink/?linkid=8434
   && ln -s /opt/dotnet/dotnet /usr/local/bin \
   && rm -rf /tmp/*
 
-ENV NODE_VERSION_1 6.10.0
-ENV NODE_VERSION_2 4.8.0
+ENV NODE_6_VERSION 6.10.0
+ENV NODE_4_VERSION 4.8.0
 ENV NVM_DIR=/usr/local/nvm 
 
 RUN curl -sL https://raw.githubusercontent.com/creationix/nvm/v0.33.1/install.sh -o /tmp/install_nvm.sh \
   &&  bash /tmp/install_nvm.sh -D=$NVM_DIR \
   && . ~/.bashrc \
-  && nvm install $NODE_VERSION_1 \
-  && nvm install $NODE_VERSION_2 \
-  && nvm alias default $NODE_VERSION_1 \
+  && nvm install $NODE_6_VERSION \
+  && nvm install $NODE_4_VERSION \
+  && nvm alias default $NODE_6_VERSION \
   && rm -rf /tmp/*
   
 RUN aws configure set region ap-southeast-2
