@@ -2,7 +2,7 @@ FROM debian:jessie
 MAINTAINER Kevin Littlejohn <kevin@littlejohn.id.au>
 
 RUN apt-get -yq update \
-  && apt-get -yq install git groff less python python-dev python-pip libyaml-dev jq curl golang libunwind8 gettext wget build-essential libssl-dev dash \
+  && apt-get -yq install git groff less python python-dev python-pip libyaml-dev jq curl golang libunwind8 gettext wget build-essential libssl-dev \
   && pip install awscli boto3 \
   && pip install git+https://github.com/rewardle/rainbow.git \
   && apt-get clean \
@@ -20,13 +20,17 @@ RUN curl -sSL -o /tmp/dotnet.tar.gz https://go.microsoft.com/fwlink/?linkid=8434
   && ln -s /opt/dotnet/dotnet /usr/local/bin \
   && rm -rf /tmp/*
 
-RUN curl -sL -o /tmp/install_nvm.sh https://raw.githubusercontent.com/creationix/nvm/v0.32.0/install.sh \
-  && bash /tmp/install_nvm.sh \
-  && dash /tmp/install_nvm.sh \
-  && . "$NVM_DIR/nvm.sh" \
-  && nvm install node \
-  && rm -rf /tmp/*
+ENV NODE_VERSION_1 6.10.0
+ENV NODE_VERSION_2 4.8.0
+ENV NVM_DIR=/usr/local/nvm 
 
+RUN curl -sL https://raw.githubusercontent.com/creationix/nvm/v0.33.1/install.sh -o /tmp/install_nvm.sh \
+  &&  bash /tmp/install_nvm.sh -D=$NVM_DIR \
+  && . ~/.bashrc \
+  && nvm install $NODE_VERSION_1 \
+  && nvm install $NODE_VERSION_2 \
+  && nvm alias default $NODE_VERSION_1 
+  
 RUN aws configure set region ap-southeast-2
 
 WORKDIR /app
