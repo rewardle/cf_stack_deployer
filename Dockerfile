@@ -2,7 +2,7 @@ FROM debian:jessie
 MAINTAINER Kevin Littlejohn <kevin@littlejohn.id.au>
 
 RUN apt-get -yq update \
-  && apt-get -yq install git groff less python python-dev python-pip libyaml-dev jq curl golang libunwind8 gettext wget build-essential libssl-dev \
+  && apt-get -yq install git groff less python python-dev python-pip libyaml-dev jq curl golang libunwind8 gettext wget build-essential libssl-dev nodejs-legacy \
   && pip install awscli boto3 \
   && pip install git+https://github.com/rewardle/rainbow.git \
   && apt-get clean \
@@ -30,7 +30,10 @@ RUN curl -sL https://raw.githubusercontent.com/creationix/nvm/v0.33.1/install.sh
   && nvm install $NODE_6_VERSION \
   && nvm install $NODE_4_VERSION \
   && nvm alias default $NODE_6_VERSION \
+  && ln -s /usr/local/nvm/versions/node/v6.10.0/bin/npm /usr/bin/npm \
   && rm -rf /tmp/*
+
+RUN npm install -g @angular/cli@1.0.0
   
 RUN aws configure set region ap-southeast-2
 
