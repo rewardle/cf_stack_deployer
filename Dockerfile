@@ -2,7 +2,7 @@ FROM debian:jessie
 MAINTAINER Kevin Littlejohn <kevin@littlejohn.id.au>
 
 RUN apt-get -yq update \
-  && apt-get -yq install git groff less python python-dev python-pip libyaml-dev jq curl golang libunwind8 gettext wget build-essential libssl-dev nodejs-legacy \
+  && apt-get -yq install git groff less python python-dev python-pip libyaml-dev jq curl golang libunwind8 gettext wget build-essential libssl-dev nodejs-legacy xvfb\
   && pip install awscli boto3 \
   && pip install git+https://github.com/rewardle/rainbow.git \
   && apt-get clean \
@@ -10,6 +10,12 @@ RUN apt-get -yq update \
 
 RUN wget --directory-prefix=/tmp/ http://mirrordirector.raspbian.org/raspbian/pool/main/libu/libunwind/libunwind8_1.1-4.1_armhf.deb \
   && dpkg -I /tmp/libunwind8_1.1-4.1_armhf.deb 
+
+RUN wget --directory-prefix=/tmp/ https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
+  && dpkg -I /tmp/google-chrome*.deb
+
+RUN echo 'export CHROME_BIN=/usr/bin/google-chrome' >> ~/.bashrc
+RUN echo 'export DISPLAY=:99.0' >> ~/.bashrc
 
 RUN curl -sL https://github.com/apex/apex/releases/download/v0.8.0/apex_linux_amd64 -o /usr/local/bin/apex \
   && chmod +x /usr/local/bin/apex
