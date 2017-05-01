@@ -14,7 +14,7 @@ RUN wget --directory-prefix=/tmp/ http://mirrordirector.raspbian.org/raspbian/po
 RUN curl -sL https://github.com/apex/apex/releases/download/v0.8.0/apex_linux_amd64 -o /usr/local/bin/apex \
   && chmod +x /usr/local/bin/apex
 
-RUN curl -sSL -o /tmp/dotnet.tar.gz https://go.microsoft.com/fwlink/?linkid=843453 \
+RUN curl -sSL -o /tmp/dotnet.tar.gz https://go.microsoft.com/fwlink/?linkid=847105 \
   && mkdir -p /opt/dotnet \
   && tar zxf /tmp/dotnet.tar.gz -C /opt/dotnet \
   && ln -s /opt/dotnet/dotnet /usr/local/bin \
