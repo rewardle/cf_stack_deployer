@@ -3,5 +3,5 @@ steps:
     command: ./ci_deploy.sh
     agent:
       os: linux
-      environment: prod
+      environment: production
       role: deployer
