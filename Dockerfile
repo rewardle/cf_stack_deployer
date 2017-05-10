@@ -1,12 +1,12 @@
 FROM debian:jessie
 MAINTAINER Kevin Littlejohn <kevin@littlejohn.id.au>
 
-RUN apt-get -yq update \
-  && apt-get -yq install git zip groff less python python-dev python-pip libyaml-dev jq curl golang libunwind8 gettext wget build-essential libssl-dev nodejs-legacy \
-  && pip install awscli boto3 docker-compose \
-  && pip install git+https://github.com/rewardle/rainbow.git \
-  && apt-get clean \
-  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN apt-get -yq update 
+RUN apt-get -yq install git zip groff less python python-dev python-pip libyaml-dev jq curl golang libunwind8 gettext wget build-essential libssl-dev nodejs-legacy 
+RUN pip install awscli boto3 docker-compose 
+RUN pip install git+https://github.com/rewardle/rainbow.git 
+RUN apt-get clean 
+RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN wget --directory-prefix=/tmp/ http://mirrordirector.raspbian.org/raspbian/pool/main/libu/libunwind/libunwind8_1.1-4.1_armhf.deb \
   && dpkg -I /tmp/libunwind8_1.1-4.1_armhf.deb 
