@@ -5,7 +5,7 @@ RUN apt-get -yq update
 RUN apt-get -yq install git zip groff less python python-dev libyaml-dev jq curl golang libunwind8 gettext wget build-essential libssl-dev nodejs-legacy 
 RUN apt-get -yq install python-pip
 RUN pip install awscli boto3 docker-compose 
-RUN pip install rainbow-cfn 
+RUN pip install git+https://github.com/rewardle/rainbow.git
 RUN apt-get clean 
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
