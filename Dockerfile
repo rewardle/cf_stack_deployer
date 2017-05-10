@@ -3,6 +3,7 @@ MAINTAINER Kevin Littlejohn <kevin@littlejohn.id.au>
 
 RUN apt-get -yq update 
 RUN apt-get -yq install git zip groff less python python-dev libyaml-dev jq curl golang libunwind8 gettext wget build-essential libssl-dev nodejs-legacy 
+RUN apt-get install python-setuptools
 RUN easy_install -U pip
 RUN pip install awscli boto3 docker-compose 
 RUN pip install rainbow-cfn 
