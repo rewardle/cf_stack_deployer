@@ -4,7 +4,7 @@ MAINTAINER Kevin Littlejohn <kevin@littlejohn.id.au>
 RUN apt-get -yq update 
 RUN apt-get -yq install git zip groff less python python-dev python-pip libyaml-dev jq curl golang libunwind8 gettext wget build-essential libssl-dev nodejs-legacy 
 RUN pip install awscli boto3 docker-compose 
-RUN pip install git+https://github.com/rewardle/rainbow.git 
+RUN pip install rainbow-cfn 
 RUN apt-get clean 
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
