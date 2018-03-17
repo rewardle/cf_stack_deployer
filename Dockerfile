@@ -2,7 +2,7 @@ FROM debian:jessie
 MAINTAINER Kevin Littlejohn <kevin@littlejohn.id.au>
 
 RUN apt-get -yq update 
-RUN apt-get -yq install git zip groff less python python-dev libyaml-dev jq curl golang libunwind8 gettext wget build-essential libssl-dev nodejs-legacy
+RUN apt-get -yq install git zip groff less python python-dev libyaml-dev jq curl golang libunwind8 gettext wget build-essential libssl-dev nodejs-legacy apt-transport-https
 
 RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
 RUN sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
@@ -21,11 +21,17 @@ RUN wget --directory-prefix=/tmp/ http://mirrordirector.raspbian.org/raspbian/po
 RUN curl -sL https://github.com/apex/apex/releases/download/v0.8.0/apex_linux_amd64 -o /usr/local/bin/apex \
   && chmod +x /usr/local/bin/apex
 
-RUN curl -sSL -o /tmp/dotnet.tar.gz https://go.microsoft.com/fwlink/?linkid=847105 \
-  && mkdir -p /opt/dotnet \
-  && tar zxf /tmp/dotnet.tar.gz -C /opt/dotnet \
-  && ln -s /opt/dotnet/dotnet /usr/local/bin \
-  && rm -rf /tmp/*
+
+# dotnet install - START
+
+RUN curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg \
+  && mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
+
+RUN sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-debian-jessie-prod jessie main" > /etc/apt/sources.list.d/dotnetdev.list'
+
+RUN apt-get -yq install dotnet-sdk-2.0.3
+
+# dotnet install - END
 
 ENV NODE_6_VERSION 6.10.0
 ENV NODE_4_VERSION 4.8.0
@@ -36,7 +42,7 @@ RUN curl -sL https://raw.githubusercontent.com/creationix/nvm/v0.33.1/install.sh
   &&  bash /tmp/install_nvm.sh -D=$NVM_DIR \
   && . ~/.bashrc \
   && nvm install $NODE_6_VERSION \
-  && npm install serverless@1.20.2 -g \
+  && npm install serverless@1.26.1 -g \
   && nvm install $NODE_4_VERSION \
   && nvm alias default $NODE_6_VERSION \
   && ln -s /usr/local/nvm/versions/node/v6.10.0/bin/npm /usr/bin/npm \
