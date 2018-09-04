@@ -29,6 +29,7 @@ RUN curl -sSL -o /tmp/dotnet.tar.gz https://go.microsoft.com/fwlink/?linkid=8471
 
 ENV NODE_6_VERSION 6.10.0
 ENV NODE_4_VERSION 4.8.0
+ENV NODE_8_VERSION 8.9.4
 ENV NVM_DIR=/usr/local/nvm 
 ENV CHROME_BIN=/usr/bin/google-chrome
 
@@ -38,11 +39,12 @@ RUN curl -sL https://raw.githubusercontent.com/creationix/nvm/v0.33.1/install.sh
   && nvm install $NODE_6_VERSION \
   && npm install serverless@1.20.2 -g \
   && nvm install $NODE_4_VERSION \
-  && nvm alias default $NODE_6_VERSION \
+  && nvm install $NODE_8_VERSION \
+  && nvm alias default $NODE_8_VERSION \
   && ln -s /usr/local/nvm/versions/node/v6.10.0/bin/npm /usr/bin/npm \
   && rm -rf /tmp/*
 
-RUN npm install -g @angular/cli@1.0.0
+RUN npm install -g @angular/cli@6.1.5
   
 RUN aws configure set region ap-southeast-2
 
