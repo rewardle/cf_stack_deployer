@@ -9,8 +9,8 @@ RUN sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc
 RUN apt-get -yq update
 RUN apt-get -yq install google-chrome-stable
 
-RUN apt-get -y install python-pip && easy_install -U pip
-RUN pip install --ignore-installed awscli boto3 docker-compose 
+RUN apt-get -yq install python-pip && easy_install -U pip
+RUN pip install awscli boto3 docker-compose 
 RUN pip install git+https://github.com/rewardle/rainbow.git
 RUN apt-get clean 
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
