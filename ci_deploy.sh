@@ -6,11 +6,10 @@ REGION="us-west-2"
 BASENAME="deployer"
 NAME="$BASENAME:$BUILDKITE_BUILD_NUMBER"
 
+echo 'Find the architecture'
+uname -i
 echo "--- Building $NAME"
 docker build -t $NAME .
-
-echo "--- Current Docker images"
-$(docker images)
 
 echo "--- Getting ECR credentials and logging in"
 $(docker run -it --entrypoint=aws $NAME ecr get-login --region=$REGION | tr -d '\r')
