@@ -9,6 +9,9 @@ NAME="$BASENAME:$BUILDKITE_BUILD_NUMBER"
 echo "--- Building $NAME"
 docker build -t $NAME .
 
+echo "--- Current Docker images"
+$(docker images)
+
 echo "--- Getting ECR credentials and logging in"
 $(docker run -it --entrypoint=aws $NAME ecr get-login --region=$REGION | tr -d '\r')
 
@@ -19,7 +22,7 @@ ACCT=$(docker run -it --entrypoint=aws $NAME \
 IMGNAME="$ACCT.dkr.ecr.$REGION.amazonaws.com/$NAME"
 
 echo "--- Tagging $IMGNAME"
-docker tag $NAME $IMGNAME
+docker tag $NAME $IMGNAMEIMGNAME
 
 echo "--- Pushing docker image"
 docker run -it --entrypoint=aws $NAME \
