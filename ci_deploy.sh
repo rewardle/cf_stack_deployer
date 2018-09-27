@@ -25,7 +25,7 @@ ACCT=$(docker run -it --entrypoint=aws $NAME \
 IMGNAME="$ACCT.dkr.ecr.$REGION.amazonaws.com/$NAME"
 
 echo "--- Tagging $IMGNAME"
-docker tag $NAME $IMGNAMEIMGNAME
+docker tag $NAME $IMGNAME
 
 echo "--- Pushing docker image"
 docker run -it --entrypoint=aws $NAME \
