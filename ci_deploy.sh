@@ -6,8 +6,12 @@ REGION="us-west-2"
 BASENAME="deployer"
 NAME="$BASENAME:$BUILDKITE_BUILD_NUMBER"
 
-echo 'Find the architecture'
+echo 'Docker version installed on the box'
+docker version
+
+echo 'System Architecture'
 uname -i
+
 echo "--- Building $NAME"
 docker build -t $NAME .
 
