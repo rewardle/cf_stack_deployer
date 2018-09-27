@@ -35,6 +35,8 @@ RUN apt-get -yq install dotnet-sdk-2.1.4
 
 # dotnet install - END
 
+# comment to trigger build
+
 ENV NODE_6_VERSION 6.10.0
 ENV NODE_4_VERSION 4.8.0
 ENV NVM_DIR=/usr/local/nvm 
