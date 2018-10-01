@@ -51,7 +51,7 @@ RUN curl -sL https://raw.githubusercontent.com/creationix/nvm/v0.33.1/install.sh
   && ln -s /usr/local/nvm/versions/node/v6.10.0/bin/npm /usr/bin/npm \
   && rm -rf /tmp/*
    
-RUN npm install serverless@1.32.0 -g \
+RUN npm install -g serverless@1.32.0 
 RUN npm install -g @angular/cli@1.0.0
   
 RUN aws configure set region ap-southeast-2
