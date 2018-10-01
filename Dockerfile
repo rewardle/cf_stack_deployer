@@ -37,7 +37,7 @@ RUN apt-get -yq install dotnet-sdk-2.1.4
 
 ENV NODE_6_VERSION 6.10.0
 ENV NODE_4_VERSION 4.8.0
-ENV NODE_8_VERSION 8.9.4
+ENV NODE_8_VERSION 8.12.0
 ENV NVM_DIR=/usr/local/nvm 
 ENV CHROME_BIN=/usr/bin/google-chrome
 
