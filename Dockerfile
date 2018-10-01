@@ -35,24 +35,20 @@ RUN apt-get -yq install dotnet-sdk-2.1.4
 
 # dotnet install - END
 
-ENV NODE_6_VERSION 6.10.0
-ENV NODE_4_VERSION 4.8.0
-ENV NODE_8_VERSION 8.12.0
+ENV NODE_VERSION_8 8.12.0
 ENV NVM_DIR=/usr/local/nvm 
 ENV CHROME_BIN=/usr/bin/google-chrome
-
 RUN curl -sL https://raw.githubusercontent.com/creationix/nvm/v0.33.1/install.sh -o /tmp/install_nvm.sh \
   &&  bash /tmp/install_nvm.sh -D=$NVM_DIR \
   && . ~/.bashrc \
-  && nvm install $NODE_6_VERSION \
-  && nvm install $NODE_4_VERSION \
-  && nvm install $NODE_8_VERSION \
-  && nvm alias default $NODE_8_VERSION \
-  && ln -s /usr/local/nvm/versions/node/v6.10.0/bin/npm /usr/bin/npm \
+  && nvm install $NODE_VERSION_8 \
+  && ln -s /usr/local/nvm/versions/node/v8.12.0/bin/npm /usr/bin/npm \
   && rm -rf /tmp/*
-   
-RUN npm install -g serverless@1.32.0 
+
+RUN node -v
+RUN npm -v
 RUN npm install -g @angular/cli@1.0.0
+RUN npm install -g serverless@1.32.0 
   
 RUN aws configure set region ap-southeast-2
 
