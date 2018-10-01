@@ -35,20 +35,19 @@ RUN apt-get -yq install dotnet-sdk-2.1.4
 
 # dotnet install - END
 
-ENV NODE_VERSION_8 8.12.0
-ENV NVM_DIR=/usr/local/nvm 
-ENV CHROME_BIN=/usr/bin/google-chrome
-RUN curl -sL https://raw.githubusercontent.com/creationix/nvm/v0.33.1/install.sh -o /tmp/install_nvm.sh \
-  &&  bash /tmp/install_nvm.sh -D=$NVM_DIR \
-  && . ~/.bashrc \
-  && nvm install $NODE_VERSION_8 \
-  && ln -s /usr/local/nvm/versions/node/v8.12.0/bin/npm /usr/bin/npm \
-  && rm -rf /tmp/*
+WORKDIR /home/download
+ARG NODEREPO="node_10.x"
+ARG DISTRO="jessie"
+# Only newest package kept in nodesource repo. Cannot pin to version using apt!
+# See https://github.com/nodesource/distributions/issues/33
+RUN curl -sSO https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+RUN apt-key add nodesource.gpg.key
+RUN echo "deb https://deb.nodesource.com/${NODEREPO} ${DISTRO} main" > /etc/apt/sources.list.d/nodesource.list
+RUN echo "deb-src https://deb.nodesource.com/${NODEREPO} ${DISTRO} main" >> /etc/apt/sources.list.d/nodesource.list
+RUN apt-get update -q && apt-get install -y 'nodejs=10.11.0*' && npm i -g npm
 
-RUN node -v
-RUN npm -v
-RUN npm install -g @angular/cli@1.0.0
 RUN npm install -g serverless@1.32.0 
+RUN npm install -g @angular/cli@6.2.3
   
 RUN aws configure set region ap-southeast-2
 
