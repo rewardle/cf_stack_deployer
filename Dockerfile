@@ -21,8 +21,7 @@ RUN wget --directory-prefix=/tmp/ http://mirrordirector.raspbian.org/raspbian/po
 RUN curl -sL https://github.com/apex/apex/releases/download/v0.8.0/apex_linux_amd64 -o /usr/local/bin/apex \
   && chmod +x /usr/local/bin/apex
 
-
-# dotnet install - START
+# Dotnet SDK Install - START
 
 RUN curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg \
   && mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
@@ -33,7 +32,9 @@ RUN apt-get -yq update
 RUN apt-get -yq install dotnet-sdk-2.0.3
 RUN apt-get -yq install dotnet-sdk-2.1.4
 
-# dotnet install - END
+# Dotnet SDK Install - END
+
+# Node Install - START
 
 WORKDIR /home/download
 ARG NODEREPO="node_10.x"
@@ -46,8 +47,14 @@ RUN echo "deb https://deb.nodesource.com/${NODEREPO} ${DISTRO} main" > /etc/apt/
 RUN echo "deb-src https://deb.nodesource.com/${NODEREPO} ${DISTRO} main" >> /etc/apt/sources.list.d/nodesource.list
 RUN apt-get update -q && apt-get install -y 'nodejs=10.11.0*' && npm i -g npm
 
+# Node Install - END
+
+# Node Packages Install- START
+
 RUN npm install -g serverless@1.32.0 
 RUN npm install -g @angular/cli@6.2.3
+
+# Node Packages Install- END
   
 RUN aws configure set region ap-southeast-2
 
