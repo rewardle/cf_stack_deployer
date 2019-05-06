@@ -33,7 +33,7 @@ RUN sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft
 RUN apt-get -yq update
 RUN apt-get -yq install dotnet-sdk-2.0.3
 RUN apt-get -yq install dotnet-sdk-2.1.4
-RUN apt-get -yq install dotnet-sdk-2.2
+RUN apt-get -yq install dotnet-sdk-2.1
 
 # dotnet install - END
 
