@@ -11,7 +11,9 @@ RUN apt-get -yq install google-chrome-stable
 
 RUN apt-get -yq install python-pip && easy_install -U pip
 RUN pip install awscli boto3 docker-compose 
-RUN pip install pyOpenSSL --upgrade
+RUN apt-get --auto-remove --yes remove python-openssl
+RUN python -m pip install cryptography --upgrade
+RUN pip install pyOpenSSL
 RUN pip install git+https://github.com/rewardle/rainbow.git
 RUN apt-get clean 
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
@@ -33,6 +35,7 @@ RUN sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft
 RUN apt-get -yq update
 RUN apt-get -yq install dotnet-sdk-2.0.3
 RUN apt-get -yq install dotnet-sdk-2.1.4
+RUN apt-get -yq install dotnet-sdk-2.1
 
 # dotnet install - END
 
