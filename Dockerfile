@@ -3,7 +3,7 @@ MAINTAINER Jason Potter <jason@rewardle.com>
 
 RUN apt-get -yq update 
 RUN apt-get -yq install git zip groff less wget curl
-RUN apt-get -yq install python3.6
+RUN apt-get -yq install python3.6.9
 RUN apt-get -yq install python3-setuptools
 RUN apt-get -yq install python3-pip 
 RUN apt-get -yq install libyaml-dev libssl-dev libunwind8 
