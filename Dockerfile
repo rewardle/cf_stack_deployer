@@ -6,14 +6,14 @@ RUN apt-get -yq install git zip groff less wget curl
 RUN apt-get -yq install libyaml-dev libssl-dev libunwind8 
 RUN apt-get -yq install jq golang  gettext build-essential nodejs-legacy apt-transport-https
 
-# python 3.6.9
-# install prerequisite packages for pyathon 3.6.9
-RUN apt-get install -yq make zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev
+# python 3.7.0
+# install prerequisite packages for python 3.7.0
+RUN apt-get install -yq apt-get install checkinstall libreadline-gplv2-dev libncursesw5-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev
 
-# download, build and install python 3.6.9
-RUN wget https://www.python.org/ftp/python/3.6.9/Python-3.6.9.tgz \
-    && tar xvf Python-3.6.9.tgz \
-    && cd Python-3.6.9 \
+# download, build and install python 3.7.0
+RUN wget https://www.python.org/ftp/python/3.7.0/Python-3.7.0.tgz \
+    && tar xvf Python-3.7.0.tgz \
+    && cd Python-3.7.0 \
     && ./configure --enable-optimizations --with-ensurepip=install \
     && make -j2 \
     && make altinstall
