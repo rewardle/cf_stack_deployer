@@ -4,7 +4,7 @@ MAINTAINER Jason Potter <jason@rewardle.com>
 RUN apt-get -yq update 
 RUN apt-get -yq install git zip groff less wget curl 
 RUN apt-get -yq install libyaml-dev libssl-dev libunwind8 
-RUN apt-get -yq install jq golang  gettext build-essential nodejs-legacy
+RUN apt-get -yq install jq golang  gettext build-essential
 
 
 RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
