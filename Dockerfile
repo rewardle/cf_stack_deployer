@@ -44,7 +44,7 @@ RUN apt-get -yq install dotnet-sdk-2.1
 
 # Node Packages Install- START
 
-RUN npm install -g serverless@1.40.0 
+RUN npm install -g serverless@1.53.0 
 RUN npm install -g @angular/cli@6.2.3
 
 # Node Packages Install- END
