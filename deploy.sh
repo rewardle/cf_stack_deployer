@@ -1,4 +1,5 @@
 #!/bin/bash
+set -eo pipefail
 
 STACKNAME=$1
 shift
