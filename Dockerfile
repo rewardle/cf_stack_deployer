@@ -1,17 +1,15 @@
-FROM debian:buster
+FROM debian:stretch
 LABEL Maintainer="Kevin Littlejohn <kevin@littlejohn.id.au>" 
 
 RUN apt-get -yq update
 RUN apt-get -yq install python-pip
-RUN apt-get -yq install git
+RUN apt-get -yq install git jq
 RUN pip install awscli boto3 docker-compose
 RUN aws configure set region ap-southeast-2
 
 RUN pip install git+https://github.com/rewardle/rainbow.git
 RUN apt-get clean 
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
-RUN apt-get -yq install jq
 
 WORKDIR /app
 
