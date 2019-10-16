@@ -7,7 +7,7 @@ RUN apt-get -yq install git jq
 RUN pip install awscli boto3 docker-compose
 RUN aws configure set region ap-southeast-2
 
-RUN pip install git+https://github.com/rewardle/rainbow.git@c4616396f16806dc5af38db40944846ac6fbd8a3
+RUN pip install git+https://github.com/rewardle/rainbow.git@182b20125f5b758caecd092021cfc1b902091657
 RUN apt-get clean 
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
