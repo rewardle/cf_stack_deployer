@@ -11,6 +11,8 @@ RUN pip install git+https://github.com/rewardle/rainbow.git
 RUN apt-get clean 
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+RUN apt-get -yq install jq
+
 WORKDIR /app
 
 ADD deploy.sh /app/deploy.sh
