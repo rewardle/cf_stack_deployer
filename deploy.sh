@@ -2,7 +2,7 @@
 set -eo pipefail
 
 STACKNAME=$1
-DEPLOYMENT_BUCKET_NAME=$2
+
 shift
 PARAMS=""
 [ -f /app/params.yaml ] && PARAMS="-d=yaml:params.yaml"
@@ -18,4 +18,4 @@ if [ -n "${JSON}" ]; then
   fi
 fi
 
-rainbow --update-stack-if-exists -v -r ${AWS_REGION:-ap-southeast-2} --deployment-bucket-name ${DEPLOYMENT_BUCKET_NAME} ${PARAMS} ${STACKNAME} stack.json "$@"
+rainbow --update-stack-if-exists -v -r ${AWS_REGION:-ap-southeast-2} ${PARAMS} ${STACKNAME} stack.json "$@"
