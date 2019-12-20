@@ -20,12 +20,4 @@ if [ -n "${JSON}" ]; then
   fi
 fi
 
-echo "--- printing individual arguments"
-echo "STACKNAME = $STACKNAME"
-echo "DEPLOYMENT_BUCKET_NAME = $DEPLOYMENT_BUCKET_NAME"
-echo "PARAMS = $PARAMS"
-
-echo "--- printing all arguments"
-echo $@
-
 rainbow --update-stack-if-exists -v -r ${AWS_REGION:-ap-southeast-2} --deployment-bucket-name ${DEPLOYMENT_BUCKET_NAME} ${PARAMS} ${STACKNAME} stack.json "$@"
