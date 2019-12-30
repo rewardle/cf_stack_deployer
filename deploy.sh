@@ -2,26 +2,29 @@
 set -eo pipefail
 
 echo "--- printing all arguments before shift"
-echo $@
-echo "0 = $0"
-echo "1 = $1"
-echo "2 = $2"
-echo "3 = $3"
-echo "4 = $4"
 
+echo $@
+
+echo "0 = $0"
+
+for i; do 
+    echo "i = $i" 
+ done
+ 
 STACKNAME=$1
 shift 1
 DEPLOYMENT_BUCKET_NAME=$1
 shift 1
 
 echo "--- printing all arguments after shift"
+
 echo $@
 
 echo "0 = $0"
-echo "1 = $1"
-echo "2 = $2"
-echo "3 = $3"
-echo "4 = $4"
+
+for i; do 
+    echo "i = $i" 
+ done
 
 echo "StackName = $STACKNAME"
 echo "DeploymentBucketName = $DEPLOYMENT_BUCKET_NAME"
@@ -47,7 +50,7 @@ echo "StackName = $STACKNAME"
 echo "DeploymentBucketName = $DEPLOYMENT_BUCKET_NAME"
 echo "Params = $PARAMS"
 
-if [ ! -z "$DEPLOYMENT_BUCKET_NAME" ];
+if [ ! -z "$DEPLOYMENT_BUCKET_NAME" ]; then
   echo "deployment bucket is set."
   rainbow --update-stack-if-exists -v -r ${AWS_REGION:-ap-southeast-2} --deployment-bucket-name ${DEPLOYMENT_BUCKET_NAME} ${PARAMS} ${STACKNAME} stack.json "$@"
 else
