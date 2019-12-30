@@ -1,16 +1,31 @@
 #!/bin/bash
 set -eo pipefail
 
-echo "--- printing all arguments before"
+echo "--- printing all arguments before shift"
 echo $@
-echo "StackName = $STACKNAME"
-echo "DeploymentBucketName = $DEPLOYMENT_BUCKET_NAME"
-echo "Params = $PARAMS"
+echo "0 = $0"
+echo "1 = $1"
+echo "2 = $2"
+echo "3 = $3"
+echo "4 = $4"
 
 STACKNAME=$1
 shift 1
 DEPLOYMENT_BUCKET_NAME=$1
 shift 1
+
+echo "--- printing all arguments after shift"
+echo $@
+
+echo "0 = $0"
+echo "1 = $1"
+echo "2 = $2"
+echo "3 = $3"
+echo "4 = $4"
+
+echo "StackName = $STACKNAME"
+echo "DeploymentBucketName = $DEPLOYMENT_BUCKET_NAME"
+echo "Params = $PARAMS"
 
 PARAMS=""
 [ -f /app/params.yaml ] && PARAMS="-d=yaml:params.yaml"
