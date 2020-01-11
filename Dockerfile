@@ -1,4 +1,4 @@
-FROM nikolaik/python-nodejs:python3.7-nodejs10
+FROM nikolaik/python-nodejs:python3.7-nodejs12
 MAINTAINER Jason Potter <jason@rewardle.com>
 
 RUN apt-get -yq update 
