@@ -44,9 +44,9 @@ RUN apt-get -yq install dotnet-sdk-2.1
 
 # Node Packages Install- START
 
+RUN npm uninstall -g @angular/cli # uninstall previous 1.0.0 \
+  && npm cache clean --force
 RUN npm install -g serverless@1.53.0 
-RUN npm uninstall -g @angular/cli # uninstall previous 1.0.0
-# RUN npm install -g @angular/cli@6.2.3
 RUN npm install -g @angular/cli@8.3.22
 
 # Node Packages Install- END
