@@ -1,4 +1,4 @@
-FROM nikolaik/python-nodejs:python3.7-nodejs12
+FROM trion/ng-cli:8.3.22
 MAINTAINER Jason Potter <jason@rewardle.com>
 
 RUN apt-get -yq update 
@@ -19,7 +19,7 @@ RUN pip3 install --upgrade setuptools
 RUN pip3 install awscli 
 RUN pip3 install boto3 
 RUN pip3 install docker-compose 
-RUN pip3 install git+https://github.com/rewardle/rainbow.git
+# RUN pip3 install git+https://github.com/rewardle/rainbow.git
 
 
 RUN wget --directory-prefix=/tmp/ http://mirrordirector.raspbian.org/raspbian/pool/main/libu/libunwind/libunwind8_1.1-4.1_armhf.deb \
@@ -30,24 +30,24 @@ RUN curl -sL https://github.com/apex/apex/releases/download/v0.8.0/apex_linux_am
 
 # Dotnet SDK Install - START
 
-RUN wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.asc.gpg
-RUN mv microsoft.asc.gpg /etc/apt/trusted.gpg.d/
-RUN wget -q https://packages.microsoft.com/config/debian/9/prod.list
-RUN mv prod.list /etc/apt/sources.list.d/microsoft-prod.list
-RUN chown root:root /etc/apt/trusted.gpg.d/microsoft.asc.gpg
-RUN chown root:root /etc/apt/sources.list.d/microsoft-prod.list
+# RUN wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.asc.gpg
+# RUN mv microsoft.asc.gpg /etc/apt/trusted.gpg.d/
+# RUN wget -q https://packages.microsoft.com/config/debian/9/prod.list
+# RUN mv prod.list /etc/apt/sources.list.d/microsoft-prod.list
+#RUN chown root:root /etc/apt/trusted.gpg.d/microsoft.asc.gpg
+#RUN chown root:root /etc/apt/sources.list.d/microsoft-prod.list
 
-RUN apt-get -yq update
-RUN apt-get -yq install dotnet-sdk-2.1
+#RUN apt-get -yq update
+#RUN apt-get -yq install dotnet-sdk-2.1
 
 # Dotnet SDK Install - END
 
 # Node Packages Install- START
 
-RUN npm uninstall -g @angular/cli \
-  && npm cache clean --force # uninstall previous 1.0.0
+# RUN npm uninstall -g @angular/cli \
+#  && npm cache clean --force # uninstall previous 1.0.0
 RUN npm install -g serverless@1.53.0 
-RUN npm install -g @angular/cli@8.3.22
+#RUN npm install -g @angular/cli@8.3.22
 
 # Node Packages Install- END
 
