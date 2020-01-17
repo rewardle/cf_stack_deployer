@@ -4,6 +4,8 @@ USER root
 
 # RUN apt-get -yq update 
 
+RUN apt-get install python3-pip
+
 RUN pip3 install awscli 
 RUN pip3 install boto3 
 RUN pip3 install docker-compose 
