@@ -2,9 +2,9 @@ FROM trion/ng-cli:8.3.22
 MAINTAINER Jason Potter <jason@rewardle.com>
 USER root
 
-# RUN apt-get -yq update 
-
+RUN apt-get -yq update 
 RUN apt-get install python3-pip
+
 
 RUN pip3 install awscli 
 RUN pip3 install boto3 
