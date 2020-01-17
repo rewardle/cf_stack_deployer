@@ -3,7 +3,7 @@ MAINTAINER Jason Potter <jason@rewardle.com>
 USER root
 
 RUN apt-get -yq update 
-RUN apt-get install python3-pip
+RUN apt-get -yq install python3-pip
 
 
 RUN pip3 install awscli 
