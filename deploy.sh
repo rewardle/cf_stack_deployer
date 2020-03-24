@@ -1,5 +1,5 @@
 #!/bin/bash
-set -eo pipefail
+
 
 STACKNAME=$1
 DEPLOYMENT_BUCKET_NAME=$2
@@ -9,7 +9,11 @@ shift 2
 PARAMS=""
 [ -f /app/params.yaml ] && PARAMS="-d=yaml:params.yaml"
 
-JSON=$(aws cloudformation describe-stacks --region ${AWS_REGION:-ap-southeast-2} --stack-name $STACKNAME) || ""
+NOSTACK=""
+JSON=$(aws cloudformation describe-stacks --region ${AWS_REGION:-ap-southeast-2} --stack-name $STACKNAME) || $NOSTACK
+
+set -eo pipefail
+
 if [ -n "${JSON}" ]; then
   STATUS=$(echo ${JSON} | jq -r '.Stacks[0].StackStatus')
   if [ "${STATUS}" == "CREATE_FAILED" ]; then
