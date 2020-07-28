@@ -45,7 +45,7 @@ RUN curl -sL https://raw.githubusercontent.com/creationix/nvm/v0.33.1/install.sh
   &&  bash /tmp/install_nvm.sh -D=$NVM_DIR \
   && . ~/.bashrc \
   && nvm install $NODE_12_VERSION \
-  && npm install -g serverless \
+  && npm install serverless -g \
   && nvm alias default $NODE_12_VERSION \
   && ln -s /usr/local/nvm/versions/node/v12.15.0/bin/npm /usr/bin/npm \
   && rm -rf /tmp/*
