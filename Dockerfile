@@ -4,7 +4,7 @@ MAINTAINER Jason Potter <jason@rewardle.com>
 Run yum update -y
 RUN yum install awscli -y
 RUN yum install python3 -y
-RUN yum install git
+RUN yum install git -y
 RUN pip3 install git+https://github.com/rewardle/rainbow.git
 RUN pip3 install boto3
 
