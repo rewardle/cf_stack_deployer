@@ -9,7 +9,7 @@ RUN pip3 install git+https://github.com/rewardle/rainbow.git
 RUN pip3 install boto3
 
 RUN curl -sL https://rpm.nodesource.com/setup_12.x | bash -
-RUN install nodejs -y
+RUN npm install nodejs -y
 RUN npm install -g npm@latest
 RUN npm install -g serverless@1.74.1
 RUN npm install -g serverless-plugin-lambda-dead-letter@1.2.1
