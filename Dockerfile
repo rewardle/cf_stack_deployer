@@ -5,6 +5,7 @@ Run yum update -y
 RUN yum install awscli -y
 RUN yum install python3 -y
 RUN yum install git -y
+RUN yum install jq -y
 RUN pip3 install git+https://github.com/rewardle/rainbow.git
 RUN pip3 install boto3
 
