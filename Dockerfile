@@ -3,11 +3,13 @@ MAINTAINER Jason Potter <jason@rewardle.com>
 
 Run yum update -y
 RUN yum install awscli -y
-RUN yum install python3 -y
+RUN yum install python -y
+RUN yum install python-pip -y
 RUN yum install git -y
 RUN yum install jq -y
-RUN pip3 install git+https://github.com/rewardle/rainbow.git
-RUN pip3 install boto3
+RUN pip install git+https://github.com/rewardle/rainbow.git
+RUN pip install boto3
+
 
 RUN curl -sL https://rpm.nodesource.com/setup_12.x | bash -
 RUN yum install nodejs -y
