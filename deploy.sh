@@ -24,4 +24,4 @@ if [ -n "${JSON}" ]; then
   fi
 fi
 
-python /usr/local/bin/rainbow --update-stack-if-exists -v -r ${AWS_REGION:-ap-southeast-2} --deployment-bucket-name ${DEPLOYMENT_BUCKET_NAME} ${PARAMS} ${STACKNAME} stack.json "$@"
+python /usr/bin/rainbow --update-stack-if-exists -v -r ${AWS_REGION:-ap-southeast-2} --deployment-bucket-name ${DEPLOYMENT_BUCKET_NAME} ${PARAMS} ${STACKNAME} stack.json "$@"
