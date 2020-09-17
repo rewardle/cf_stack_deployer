@@ -7,6 +7,7 @@ RUN apk add --no-cache \
   ca-certificates \
   groff \
   less \
+  coreutils \
   bash 
 
 RUN pip install --no-cache-dir --upgrade pip awscli
