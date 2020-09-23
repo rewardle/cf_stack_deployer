@@ -8,7 +8,8 @@ RUN apk add --no-cache \
   groff \
   less \
   coreutils \
-  bash
+  bash \
+  curl
 
 # dotnet Core dependencies
 RUN apk add --no-cache icu-libs
