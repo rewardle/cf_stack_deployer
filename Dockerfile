@@ -34,4 +34,6 @@ RUN npm install -g serverless-plugin-log-retention@2.0.0
 RUN npm install -g serverless-latest-layer-version@2.1.0
 RUN npm install -g serverless-domain-manager@3.3.2
 
+WORKDIR /app
+
 ENTRYPOINT ["/bin/bash", "-c"] 
