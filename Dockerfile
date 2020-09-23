@@ -8,21 +8,24 @@ RUN apk add --no-cache \
   groff \
   less \
   coreutils \
-  bash \
-  libc6 \
-  libgcc1 \
-  libgssapi-krb5-2 \
-  libicu66 \
-  libssl1.1 \
-  libstdc++6 \
-  zlib1g
+  bash
 
-RUN pip install --no-cache-dir --upgrade pip awscli
+# dotnet Core dependencies
+RUN apk add --no-cache icu-libs
+RUN apk add --no-cache krb5-libs
+RUN apk add --no-cache libgcc
+RUN apk add --no-cache libintl
+RUN apk add --no-cache libssl1.1
+RUN apk add --no-cache libstdc++
+RUN apk add --no-cache zlib
 
 RUN curl -sSL https://dot.net/v1/dotnet-install.sh | bash /dev/stdin -Channel 2.1 -Runtime dotnet -InstallDir /usr/share/dotnet \
     && ln -s /usr/share/dotnet/dotnet /usr/bin/dotnet
 
+# AWS cli
+RUN pip install --no-cache-dir --upgrade pip awscli
 
+# Node and serverless
 RUN npm install -g npm@latest
 RUN npm install -g serverless@1.70.1
 RUN npm install -g serverless-plugin-lambda-dead-letter@1.2.1
