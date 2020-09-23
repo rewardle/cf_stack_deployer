@@ -9,7 +9,8 @@ RUN apk add --no-cache \
   less \
   coreutils \
   bash \
-  curl
+  curl \
+  zip
 
 # dotnet Core dependencies
 RUN apk add --no-cache icu-libs
