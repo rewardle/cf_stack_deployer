@@ -20,7 +20,7 @@ RUN apk add --no-cache libssl1.1
 RUN apk add --no-cache libstdc++
 RUN apk add --no-cache zlib
 
-RUN curl -sSL https://dot.net/v1/dotnet-install.sh | bash /dev/stdin -Channel 2.1 -Runtime dotnet -InstallDir /usr/share/dotnet 
+RUN curl -sSL https://dot.net/v1/dotnet-install.sh | bash /dev/stdin -Channel 2.1 -InstallDir /usr/share/dotnet 
 RUN ln -s /usr/share/dotnet/dotnet /usr/bin/dotnet
 
 # AWS cli
