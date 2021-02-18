@@ -28,7 +28,7 @@ RUN ln -s /usr/share/dotnet/dotnet /usr/bin/dotnet
 RUN pip install --no-cache-dir --upgrade pip awscli
 
 # Node and serverless
-RUN npm install -g npm@latest
+RUN npm install -g npm@6.14.8
 RUN npm install -g serverless@1.70.1
 RUN npm install -g serverless-plugin-lambda-dead-letter@1.2.1
 RUN npm install -g serverless-pseudo-parameters@2.5.0
