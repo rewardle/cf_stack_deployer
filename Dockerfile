@@ -11,7 +11,8 @@ RUN apt-get -yq install google-chrome-stable
 
 RUN apt-get -yq install python-pip && easy_install -U pip
 RUN python -m pip install --upgrade "pip==20.3.4"
-RUN pip install --upgrade "setuptools==44.1.1"
+RUN rm -rf /usr/lib/python2.7/dist-packages/setuptools-5.5.1.egg-info \
+  && pip install --upgrade "setuptools==44.1.1"
 RUN pip install awscli boto3
 RUN pip install docker-compose==1.23.2
 RUN apt-get --auto-remove --yes remove python-openssl
