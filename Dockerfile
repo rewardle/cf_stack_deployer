@@ -13,7 +13,7 @@ RUN apt-get -yq install python-pip && easy_install -U pip
 RUN pip install --upgrade "pip < 21"
 RUN pip install --upgrade "setuptools < 45"
 RUN pip install awscli boto3
-RUN pip install docker-compose
+RUN pip install docker-compose==1.23.2
 RUN apt-get --auto-remove --yes remove python-openssl
 RUN python -m pip install cryptography --upgrade
 RUN pip install pyOpenSSL
