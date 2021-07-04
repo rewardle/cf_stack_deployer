@@ -10,7 +10,8 @@ RUN apt-get -yq update
 RUN apt-get -yq install google-chrome-stable
 
 RUN apt-get -yq install python-pip && easy_install -U pip
-RUN pip install --upgrade "pip==20.3.4" && hash -d pip
+RUN pip install --upgrade "pip==20.3.4" \
+  && hash -d pip
 RUN pip install --upgrade "setuptools==44.1.1"
 RUN pip install awscli boto3
 RUN pip install docker-compose==1.23.2
