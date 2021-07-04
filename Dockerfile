@@ -10,7 +10,7 @@ RUN apt-get -yq update
 RUN apt-get -yq install google-chrome-stable
 
 RUN apt-get -yq install python-pip && easy_install -U pip
-RUN pip install -U 'pip==9.0.1'
+RUN pip install --upgrade "pip < 21.0"
 RUN pip install -U 'setuptools==44.1.1'
 RUN pip install awscli boto3 docker-compose 
 RUN apt-get --auto-remove --yes remove python-openssl
