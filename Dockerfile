@@ -9,16 +9,16 @@ RUN sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc
 RUN apt-get -yq update
 RUN apt-get -yq install google-chrome-stable
 
-RUN apt-get -yq install python-pip && easy_install -U pip
+RUN apt-get -yq install epel-release python-pip python-devel gcc && easy_install -U pip
 RUN python -m pip list
 RUN python -m pip install --upgrade "pip==20.3.4" 
 RUN pip install --upgrade "setuptools==44.1.1"
 RUN pip install awscli boto3
-RUN pip install docker-compose==1.23.2
+RUN pip install docker-compose==1.25.0
 RUN apt-get --auto-remove --yes remove python-openssl
-# RUN pip install setuptools_rust
-# RUN python -m pip install --upgrade cffi
-RUN python -m pip install --upgrade "cryptography==2.8"
+RUN pip install setuptools_rust
+RUN python -m pip install --upgrade cffi
+RUN python -m pip install --upgrade "cryptography < 3.4"
 RUN pip install pyOpenSSL
 RUN pip install git+https://github.com/rewardle/rainbow.git
 RUN apt-get clean 
