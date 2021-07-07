@@ -10,6 +10,7 @@ RUN apt-get -yq update
 RUN apt-get -yq install google-chrome-stable
 
 RUN apt-get -yq install python-pip && easy_install -U pip
+RUN python -m pip list --format=freeze
 RUN python -m pip install --upgrade "pip==20.3.4" 
 RUN pip install --upgrade "setuptools==44.1.1"
 RUN pip install awscli boto3
