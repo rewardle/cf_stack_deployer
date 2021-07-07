@@ -15,7 +15,7 @@ RUN pip install --upgrade "setuptools==44.1.1"
 RUN pip install awscli boto3
 RUN pip install docker-compose==1.23.2
 RUN apt-get --auto-remove --yes remove python-openssl
-RUN pip install --upgrade "cryptography==1.6" 
+RUN pip install --upgrade "cryptography==1.4" 
 RUN pip install pyOpenSSL
 
 RUN pip install git+https://github.com/rewardle/rainbow.git
