@@ -26,4 +26,4 @@ fi
 
 echo "--- deploy through rainbow python3 port"
 
-rainbow --update-stack-if-exists -v -r ${AWS_REGION:-ap-southeast-2} --dump-datasources true --deployment-bucket-name ${DEPLOYMENT_BUCKET_NAME} ${PARAMS} ${STACKNAME} stack.json "$@"
+rainbow --update-stack-if-exists -v -r ${AWS_REGION:-ap-southeast-2} --dump-datasources --deployment-bucket-name ${DEPLOYMENT_BUCKET_NAME} ${PARAMS} ${STACKNAME} stack.json "$@"
