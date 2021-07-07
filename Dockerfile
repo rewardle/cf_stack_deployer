@@ -19,7 +19,7 @@ RUN pip3 install --upgrade setuptools
 RUN pip3 install awscli 
 RUN pip3 install boto3 
 RUN pip3 install docker-compose 
-RUN pip3 install git+https://github.com/rewardle/rainbow.git@python3port
+RUN pip3 install git+https://github.com/rewardle/rainbow.git
 
 
 RUN wget --directory-prefix=/tmp/ http://mirrordirector.raspbian.org/raspbian/pool/main/libu/libunwind/libunwind8_1.1-4.1_armhf.deb \
