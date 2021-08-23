@@ -12,6 +12,10 @@ RUN apk add --no-cache \
   curl \
   zip
 
+# Prevent `EMFILE: too many open files, scandir`
+# https://stackoverflow.com/questions/8965606/node-and-error-emfile-too-many-open-files
+RUN ulimit -Sn 65536
+
 # dotnet Core dependencies
 RUN apk add --no-cache icu-libs
 RUN apk add --no-cache krb5-libs
