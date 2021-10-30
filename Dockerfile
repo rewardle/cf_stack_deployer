@@ -19,8 +19,6 @@ RUN pip3 install --upgrade setuptools
 RUN pip3 install awscli 
 RUN pip3 install boto3 
 RUN pip3 install docker-compose 
-RUN pip3 install git+https://github.com/rewardle/rainbow.git@python3port
-
 
 RUN wget --directory-prefix=/tmp/ http://mirrordirector.raspbian.org/raspbian/pool/main/libu/libunwind/libunwind8_1.1-4.1_armhf.deb \
   && dpkg -I /tmp/libunwind8_1.1-4.1_armhf.deb
@@ -47,6 +45,8 @@ RUN apt-get -yq install dotnet-sdk-2.1
 RUN npm install -g serverless@1.53.0 
 
 # Node Packages Install- END
+
+RUN pip3 install git+https://github.com/rewardle/rainbow.git@python3port
 
 RUN apt-get clean 
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
