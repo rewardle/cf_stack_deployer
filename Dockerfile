@@ -45,7 +45,7 @@ RUN apt-get -yq install dotnet-sdk-2.1
 RUN npm install -g serverless@1.53.0 
 
 # Node Packages Install- END
-RUN sh -c 'echo bust cache 1234'
+RUN sh -c 'echo bust cache 12345'
 RUN pip3 install git+https://github.com/rewardle/rainbow.git@python3port
 
 RUN apt-get clean 
