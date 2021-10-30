@@ -1,5 +1,5 @@
 FROM nikolaik/python-nodejs:python3.7-nodejs10
-MAINTAINER Jason Potter <jason@rewardle.com>
+LABEL org.opencontainers.image.authors="Jason Potter <jason@rewardle.com>"
 
 RUN apt-get -yq update 
 RUN apt-get -yq install git zip groff less wget curl 
@@ -45,7 +45,6 @@ RUN apt-get -yq install dotnet-sdk-2.1
 # Node Packages Install- START
 
 RUN npm install -g serverless@1.53.0 
-RUN npm install -g @angular/cli@6.2.3
 
 # Node Packages Install- END
 
