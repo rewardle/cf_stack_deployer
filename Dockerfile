@@ -42,19 +42,19 @@ RUN apt-get -yq install dotnet-sdk-3.1
 
 # comment to trigger build
 
-ENV NODE_6_VERSION 6.10.0
-ENV NODE_4_VERSION 4.8.0
+ENV NODE_12_VERSION 12.1.0
+ENV NODE_11_VERSION 11.7.0
 ENV NVM_DIR=/usr/local/nvm 
 ENV CHROME_BIN=/usr/bin/google-chrome
 
-RUN curl -sL https://raw.githubusercontent.com/creationix/nvm/v0.38.0/install.sh -o /tmp/install_nvm.sh \
+RUN curl -sL https://raw.githubusercontent.com/creationix/nvm/v0.35.3/install.sh -o /tmp/install_nvm.sh \
   &&  bash /tmp/install_nvm.sh -D=$NVM_DIR \
   && . ~/.bashrc \
-  && nvm install $NODE_6_VERSION \
+  && nvm install $NODE_12_VERSION \
   && npm install serverless@1.74.1 -g \
-  && nvm install $NODE_4_VERSION \
-  && nvm alias default $NODE_6_VERSION \
-#  && ln -s /usr/local/nvm/versions/node/v6.10.0/bin/npm /usr/bin/npm \
+  && nvm install $NODE_11_VERSION \
+  && nvm alias default $NODE_12_VERSION \
+  && ln -s /usr/local/nvm/versions/node/v12.1.0/bin/npm /usr/bin/npm \
   && rm -rf /tmp/*
 
 RUN npm install -g @angular/cli@1.0.0
