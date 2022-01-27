@@ -54,7 +54,7 @@ RUN curl -sL https://raw.githubusercontent.com/creationix/nvm/v0.38.0/install.sh
   && npm install serverless@1.74.1 -g \
   && nvm install $NODE_4_VERSION \
   && nvm alias default $NODE_6_VERSION \
-  && ln -s /usr/local/nvm/versions/node/v6.10.0/bin/npm /usr/bin/npm \
+#  && ln -s /usr/local/nvm/versions/node/v6.10.0/bin/npm /usr/bin/npm \
   && rm -rf /tmp/*
 
 RUN npm install -g @angular/cli@1.0.0
