@@ -57,7 +57,7 @@ RUN curl -sL https://raw.githubusercontent.com/creationix/nvm/v0.33.1/install.sh
   && ln -s /usr/local/nvm/versions/node/v12.1.0/bin/npm /usr/bin/npm \
   && rm -rf /tmp/*
 
-RUN npm install -g @angular/cli@1.0.0
+# RUN npm install -g @angular/cli@1.0.0
   
 RUN aws configure set region ap-southeast-2
 
