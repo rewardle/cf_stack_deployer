@@ -12,7 +12,7 @@ RUN apt-get -yq install google-chrome-stable
 RUN apt-get -yq install python3-pip
 RUN pip3 install awscli boto3 docker-compose 
 # RUN apt-get --auto-remove --yes remove python-openssl
-RUN python3 -m pip3 install cryptography --upgrade
+RUN python3 -m pip install cryptography --upgrade
 RUN pip3 install pyOpenSSL
 RUN pip3 install git+https://github.com/rewardle/rainbow.git
 RUN apt-get clean 
