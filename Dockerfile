@@ -9,7 +9,7 @@ RUN sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc
 RUN apt-get -yq update
 RUN apt-get -yq install google-chrome-stable
 
-RUN apt-get -yq install python-pip && easy_install -U pip
+RUN apt-get -yq install python3-pip && easy_install -U pip
 RUN pip install awscli boto3 docker-compose 
 RUN apt-get --auto-remove --yes remove python-openssl
 RUN python -m pip install cryptography --upgrade
