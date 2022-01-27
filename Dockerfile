@@ -47,7 +47,7 @@ ENV NODE_11_VERSION 11.7.0
 ENV NVM_DIR=/usr/local/nvm 
 ENV CHROME_BIN=/usr/bin/google-chrome
 
-RUN curl -sL https://raw.githubusercontent.com/creationix/nvm/v0.35.3/install.sh -o /tmp/install_nvm.sh \
+RUN curl -sL https://raw.githubusercontent.com/creationix/nvm/v0.33.1/install.sh -o /tmp/install_nvm.sh \
   &&  bash /tmp/install_nvm.sh -D=$NVM_DIR \
   && . ~/.bashrc \
   && nvm install $NODE_12_VERSION \
