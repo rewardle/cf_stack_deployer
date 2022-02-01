@@ -24,7 +24,6 @@ RUN wget --directory-prefix=/tmp/ http://mirrordirector.raspbian.org/raspbian/po
 RUN curl -sL https://github.com/apex/apex/releases/download/v0.8.0/apex_linux_amd64 -o /usr/local/bin/apex \
   && chmod +x /usr/local/bin/apex
 
-
 # dotnet install - START
 
 RUN curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg \
@@ -33,11 +32,11 @@ RUN curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > mic
 RUN sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-debian-bullseye-prod bullseye main" > /etc/apt/sources.list.d/dotnetdev.list'
 
 RUN apt-get -yq update
-RUN dotnet tool install -g Amazon.Lambda.Tools
 # RUN apt-get -yq install dotnet-sdk-2.0.3
 # RUN apt-get -yq install dotnet-sdk-2.1.4
 # RUN apt-get -yq install dotnet-sdk-2.1
 RUN apt-get -yq install dotnet-sdk-3.1
+RUN dotnet tool install -g Amazon.Lambda.Tools --version 3.1.0
 
 # dotnet install - END
 
