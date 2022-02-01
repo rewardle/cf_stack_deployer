@@ -33,7 +33,7 @@ RUN curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > mic
 RUN sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-debian-bullseye-prod bullseye main" > /etc/apt/sources.list.d/dotnetdev.list'
 
 RUN apt-get -yq update
-dotnet tool install -g Amazon.Lambda.Tools
+RUN dotnet tool install -g Amazon.Lambda.Tools
 # RUN apt-get -yq install dotnet-sdk-2.0.3
 # RUN apt-get -yq install dotnet-sdk-2.1.4
 # RUN apt-get -yq install dotnet-sdk-2.1
