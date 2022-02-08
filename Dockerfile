@@ -37,34 +37,24 @@ RUN apt-get -yq update
 # RUN apt-get -yq install dotnet-sdk-2.1
 RUN apt-get -yq install dotnet-sdk-3.1
 RUN dotnet tool install -g Amazon.Lambda.Tools
-
-# RUN dotnet tool uninstall --global dotnet-dev-certs
-# RUN dotnet tool install --global dotnet-dev-certs
-
-RUN dotnet dev-certs https --clean
-RUN dotnet tool install --global dotnet-dev-certs --version 2.2.0
-RUN dotnet dev-certs https
-RUN dotnet dev-certs https --check
-# RUN dotnet dev-certs https --trust
 ENV PATH="${PATH}:/root/.dotnet/tools"
 
 RUN dotnet --info
+
 # dotnet install - END
 
 # comment to trigger build
 
-ENV NODE_12_VERSION 12.1.0
-ENV NODE_11_VERSION 11.7.0
+ENV NODE_14_VERSION 14.19.0
 ENV NVM_DIR=/usr/local/nvm 
 ENV CHROME_BIN=/usr/bin/google-chrome
 
 RUN curl -sL https://raw.githubusercontent.com/creationix/nvm/v0.33.1/install.sh -o /tmp/install_nvm.sh \
   &&  bash /tmp/install_nvm.sh -D=$NVM_DIR \
   && . ~/.bashrc \
-  && nvm install $NODE_12_VERSION \
+  && nvm install $NODE_14_VERSION \
   && npm install serverless@2.72.2 -g \
-  && nvm install $NODE_11_VERSION \
-  && nvm alias default $NODE_12_VERSION \
+  && nvm alias default $NODE_14_VERSION \
   && ln -s /usr/local/nvm/versions/node/v12.1.0/bin/npm /usr/bin/npm \
   && rm -rf /tmp/*
 
