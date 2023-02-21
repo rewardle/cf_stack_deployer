@@ -35,11 +35,13 @@ RUN pip install --no-cache-dir --upgrade pip awscli
 RUN npm install -g npm@6.14.8
 RUN npm install -g serverless@2.72.2
 RUN npm install -g serverless-plugin-lambda-dead-letter@1.2.1
-RUN npm install -g serverless-pseudo-parameters@2.5.0
+RUN npm install -g serverless-domain-manager@5.0.0
+RUN npm install -g serverless-step-functions@1.19.2
+RUN npm install -g serverless-latest-layer-version@2.1.1
 RUN npm install -g serverless-plugin-log-retention@2.0.0
-RUN npm install -g serverless-latest-layer-version@2.1.0
-RUN npm install -g serverless-domain-manager@3.3.2
+RUN npm install -g serverless-plugin-typescript@1.1.9
 RUN npm install -g serverless-plugin-include-dependencies@5.0.0
+# RUN npm install -g serverless-pseudo-parameters@2.5.0 - it required as it's built - into serverless framework 2.72.2 onwards
 
 WORKDIR /app
 
