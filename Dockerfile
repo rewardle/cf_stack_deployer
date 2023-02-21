@@ -33,7 +33,7 @@ RUN pip install --no-cache-dir --upgrade pip awscli
 
 # Node and serverless
 RUN npm install -g npm@6.14.8
-RUN npm install -g serverless@2.55.0
+RUN npm install -g serverless@2.72.2
 RUN npm install -g serverless-plugin-lambda-dead-letter@1.2.1
 RUN npm install -g serverless-pseudo-parameters@2.5.0
 RUN npm install -g serverless-plugin-log-retention@2.0.0
