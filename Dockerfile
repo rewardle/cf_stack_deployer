@@ -35,7 +35,8 @@ RUN apt-get -yq update
 # RUN apt-get -yq install dotnet-sdk-2.0.3
 # RUN apt-get -yq install dotnet-sdk-2.1.4
 # RUN apt-get -yq install dotnet-sdk-2.1
-RUN apt-get -yq install dotnet-sdk-3.1
+# RUN apt-get -yq install dotnet-sdk-3.1
+RUN apt-get -yq install dotnet-sdk-6.0
 RUN dotnet tool install -g Amazon.Lambda.Tools
 ENV PATH="${PATH}:/root/.dotnet/tools"
 
