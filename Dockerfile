@@ -61,8 +61,11 @@ RUN curl -sL https://raw.githubusercontent.com/creationix/nvm/v0.33.1/install.sh
 
 # RUN npm install -g @angular/cli@1.0.0
 
+RUN sh -c 'echo $0'
+
 # Node and serverless
-RUN npm install -g npm@6.14.8
+# RUN npm install -g npm@6.14.8
+RUN npm install -g npm@latest
 RUN npm install -g serverless@2.72.2
 RUN npm install -g serverless-plugin-lambda-dead-letter@1.2.1
 RUN npm install -g serverless-domain-manager@5.8.0
