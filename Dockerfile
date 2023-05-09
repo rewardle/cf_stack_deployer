@@ -66,13 +66,13 @@ RUN sh -c 'echo $0'
 # Node and serverless
 # RUN npm install -g npm@6.14.8
 # RUN npm install -g serverless@2.72.2
-RUN npm install -g serverless-plugin-lambda-dead-letter@1.2.1
-RUN npm install -g serverless-domain-manager@5.8.0
-RUN npm install -g serverless-step-functions@3.5.1
-RUN npm install -g serverless-latest-layer-version@2.1.2
-RUN npm install -g serverless-plugin-log-retention@2.0.0
-RUN npm install -g serverless-plugin-typescript@1.1.9
-RUN npm install -g serverless-plugin-include-dependencies@5.0.0
+# RUN npm install -g serverless-plugin-lambda-dead-letter@1.2.1
+# RUN npm install -g serverless-domain-manager@5.8.0
+# RUN npm install -g serverless-step-functions@3.5.1
+# RUN npm install -g serverless-latest-layer-version@2.1.2
+# RUN npm install -g serverless-plugin-log-retention@2.0.0
+# RUN npm install -g serverless-plugin-typescript@1.1.9
+# RUN npm install -g serverless-plugin-include-dependencies@5.0.0
 
 RUN aws configure set region ap-southeast-2
 
