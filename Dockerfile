@@ -17,9 +17,6 @@ RUN touch ~/.bashrc && chmod +x ~/.bashrc
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 RUN . ~/.nvm/nvm.sh && . ~/.bashrc && nvm install --lts
 
-RUN dotnet tool install -g Amazon.Lambda.Tools
-ENV PATH="${PATH}:/root/.dotnet/tools"
-
 RUN npm install -g serverless@3.28.1
 
 # Node Packages Install- END
