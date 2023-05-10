@@ -6,6 +6,10 @@ RUN apt-get -yq install git zip groff less wget curl npm ca-certificates gnupg l
 RUN apt-get -yq remove docker docker.io containerd runc
 RUN curl -fsSL https://get.docker.com -o get-docker.sh
 RUN sh get-docker.sh
+RUN apt-get -yq install build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev wget libbz2-dev
+RUN apt-get -yq install python3
+RUN apt-get -yq install python3-pip
+RUN apt-get -yq install python3-venv
 RUN pip3 install awscli 
 RUN pip3 install boto3 
 RUN pip3 install docker-compose 
