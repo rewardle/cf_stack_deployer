@@ -11,8 +11,9 @@ RUN pip3 install boto3
 RUN pip3 install docker-compose 
 RUN touch ~/.bashrc && chmod +x ~/.bashrc
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
-RUN . ~/.nvm/nvm.sh && . ~/.bashrc && nvm install --lts && nvm install 14 && nvm install 15 && nvm install 16 && nvm install 17 && nvm install 18 && nvm install 19 && nvm install 20
-RUN . ~/.nvm/nvm.sh && . ~/.bashrc && nvm use 16
+# RUN . ~/.nvm/nvm.sh && . ~/.bashrc && nvm install --lts && nvm install 14 && nvm install 15 && nvm install 16 && nvm install 17 && nvm install 18 && nvm install 19 && nvm install 20
+RUN . ~/.nvm/nvm.sh && . ~/.bashrc && nvm install --lts
+# RUN . ~/.nvm/nvm.sh && . ~/.bashrc && nvm use 16
 RUN npm install -g serverless@3.28.1
 
 # Node Packages Install- END
